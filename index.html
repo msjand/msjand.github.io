@@ -2,13 +2,23 @@
 <html>
 <head>
 </head>
+
+<style>
+  body {
+    overflow: hidden;
+    background-color: 1A1A1A;	
+  }
+</style>
+
 <body>
 <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/dylanNew/live2d/webgl/Live2D/lib/live2d.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pixi.js@6.5.2/dist/browser/pixi.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display/dist/index.min.js"></script>
 
-<canvas id=canvas></canvas>
+<canvas id="canvas" width="976" height="880" style="
+    margin-left: -500px;
+"></canvas>
 
 <script>
 const cubism4Model =
@@ -18,7 +28,8 @@ const cubism4Model =
   const app = new PIXI.Application({
     view: document.getElementById("canvas"),
     autoStart: true,
-    resizeTo: window
+    resizeTo: window,
+    backgroundColor: 0x1A1A1A
   });
 
   const model4 = await PIXI.live2d.Live2DModel.from(cubism4Model);
@@ -29,6 +40,17 @@ const cubism4Model =
 
   model4.x = 300;
 })();
+
+  models.forEach((model) => {
+    app.stage.addChild(model);
+
+    const scaleX = (innerWidth * 0.4) / model.width;
+    const scaleY = (innerHeight * 0.8) / model.height;
+
+    // fit the window
+  model.scale.set(Math.min(scaleX, scaleY));
+  model.y = innerHeight * 0.1;
+    });
 
 </script>
 
