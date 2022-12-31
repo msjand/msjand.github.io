@@ -17,7 +17,7 @@
 <script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display/dist/index.min.js"></script>
 
 
-<canvas id="canvas" width="878" height="792" style="margin-left: -400px;touch-action: none;cursor: inherit;margin-top: -100;margin-top: -135;margin-top: -135px;"></canvas>
+<canvas id="canvas" width="878" height="792"></canvas>
 
 <script>
 const cubism4Model =
@@ -35,9 +35,10 @@ const cubism4Model =
 
   app.stage.addChild(model4);
 
-  model4.scale.set(0.25);
+  model4.scale.set(0.1);
 
-  model4.x = 300;
+  model4.x = -50;
+  model4.y = -50;
 })();
 
   models.forEach((model) => {
